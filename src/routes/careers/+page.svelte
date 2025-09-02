@@ -66,7 +66,9 @@
 </div>
 
 <script>
-	document.addEventListener('DOMContentLoaded', function() {
+	import { onMount } from 'svelte';
+	
+	onMount(() => {
 		const form = document.getElementById('applicationForm');
 		
 		if (form) {
