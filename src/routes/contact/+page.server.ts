@@ -2,7 +2,7 @@ import { fail } from '@sveltejs/kit';
 import nodemailer from 'nodemailer';
 import type { Actions } from './$types';
 import dotenv from 'dotenv';
-import { saveCorrespondence } from '$lib/database.js';
+import { saveApplicant } from '$lib/database.js';
 
 // Load environment variables
 dotenv.config();
@@ -91,10 +91,10 @@ Est. 1923 | "Aliis Si Licet, Tibi Non Licet"
 				text: contactEmail
 			});
 
-			// Save contact info to correspondence database with marketing opt-in (automatically set to 'yes')
+			// Save as applicant for now (we'll use the existing table structure)
 			try {
-				await saveCorrespondence(name, email, phone || '', matter, message, confidentiality || 'standard');
-				console.log('Contact saved to correspondence database:', email);
+				await saveApplicant(email, `Contact Form: ${matter} - ${message.substring(0, 100)}...`);
+				console.log('Contact saved to database:', email);
 			} catch (dbError) {
 				console.error('Database error:', dbError);
 				// Don't fail the form if database save fails
