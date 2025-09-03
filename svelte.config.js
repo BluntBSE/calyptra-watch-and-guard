@@ -15,7 +15,7 @@ const config = {
 			out: 'build'
 		}),
 		csrf: {
-			trustedOrigins: ['http://localhost:*', 'https://watchandguard.us', 'https://*.watchandguard.us']
+			checkOrigin: false
 		}
 	}
 };
