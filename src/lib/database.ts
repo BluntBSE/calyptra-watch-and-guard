@@ -134,25 +134,46 @@ export function saveApplicant(email: string, message: string) {
   return new Promise((resolve, reject) => {
     const db = new sqlite3.Database(dbPath);
     
-    const query = `INSERT INTO applicants (email, reason, submitted_at, opt_in_communication) VALUES (?, ?, datetime('now'), 'yes')`;
+    // Create applicants table if it doesn't exist
+    const createTableQuery = `
+      CREATE TABLE IF NOT EXISTS applicants (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        email TEXT NOT NULL,
+        message TEXT NOT NULL,
+        submitted_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        opt_in_communication TEXT DEFAULT 'yes'
+      )
+    `;
     
-    db.run(query, [email, message], function(err) {
-      if (err) {
-        console.error('Database error:', err);
+    db.run(createTableQuery, function(createErr) {
+      if (createErr) {
+        console.error('Error creating applicants table:', createErr);
         db.close();
-        reject(err);
+        reject(createErr);
         return;
       }
       
-      console.log(`✅ Saved applicant: ${email} (ID: ${this.lastID}) - Opted in: yes`);
+      // Now insert the record
+      const insertQuery = `INSERT INTO applicants (email, message, submitted_at, opt_in_communication) VALUES (?, ?, datetime('now'), 'yes')`;
       
-      db.close((closeErr) => {
-        if (closeErr) {
-          console.error('Error closing database:', closeErr);
-          reject(closeErr);
-        } else {
-          resolve({ id: this.lastID, email, message, optIn: 'yes' });
+      db.run(insertQuery, [email, message], function(err) {
+        if (err) {
+          console.error('Database error:', err);
+          db.close();
+          reject(err);
+          return;
         }
+        
+        console.log(`✅ Saved applicant: ${email} (ID: ${this.lastID}) - Opted in: yes`);
+        
+        db.close((closeErr) => {
+          if (closeErr) {
+            console.error('Error closing database:', closeErr);
+            reject(closeErr);
+          } else {
+            resolve({ id: this.lastID, email, message, optIn: 'yes' });
+          }
+        });
       });
     });
   });

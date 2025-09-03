@@ -91,9 +91,9 @@ Est. 1923 | "Aliis Si Licet, Tibi Non Licet"
 				text: contactEmail
 			});
 
-			// Save as applicant for now (we'll use the existing table structure)
+			// Save contact inquiry to applicants table (using available function)
 			try {
-				await saveApplicant(email, `Contact Form: ${matter} - ${message.substring(0, 100)}...`);
+				await saveApplicant(email, `CONTACT: ${matter} | ${name} | ${phone || 'No phone'} | ${message.substring(0, 200)}...`);
 				console.log('Contact saved to database:', email);
 			} catch (dbError) {
 				console.error('Database error:', dbError);
