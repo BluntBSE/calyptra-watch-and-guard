@@ -71,40 +71,7 @@
 
 	<section class="contact-content">
 		<div class="container">
-			<div class="contact-info">
-				<div class="contact-section">
-					<h2>Office Information</h2>
-					<div class="office-details">
-						<div class="contact-method">
-							<h3>Correspondence Address</h3>
-							<p>investigations@calyptra.com</p>
-							<p>All electronic correspondence encrypted</p>
-						</div>
-						<div class="contact-method">
-							<h3>Telephone</h3>
-							<p>Regent 4-7829</p>
-							<p>Business hours: 9:00 AM - 6:00 PM EST</p>
-						</div>
-						<div class="contact-method">
-							<h3>Office Consultation</h3>
-							<p>Private meeting rooms available</p>
-							<p>By appointment only - discretion assured</p>
-						</div>
-					</div>
-				</div>
 
-				<div class="contact-section">
-					<h2>Office Location</h2>
-					<div class="office-location">
-						<img src="https://placekitten.com/500/300" alt="Historic office building exterior" class="office-image">
-						<div class="location-details">
-							<p><strong>Professional Offices</strong></p>
-							<p>Located in the historic financial district, our offices occupy the entire fourth floor of a distinguished pre-war building. Private elevators and discrete entrances ensure client confidentiality.</p>
-							<p><em>Exact address provided upon scheduling consultation</em></p>
-						</div>
-					</div>
-				</div>
-			</div>
 
 			<div class="inquiry-form-section">
 				<h2>Submit Confidential Inquiry</h2>

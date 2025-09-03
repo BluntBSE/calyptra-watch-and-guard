@@ -27,8 +27,6 @@
 				</div>
 				<ul class="nav-links">
 					<li><a href="/">Home</a></li>
-					<li><a href="/services">Services</a></li>
-					<li><a href="/about">About</a></li>
 					<li><a href="/careers">Careers</a></li>
 					<li><a href="/contact">Contact</a></li>
 				</ul>
@@ -44,7 +42,7 @@
 		<div class="footer-container">
 			<div class="footer-section">
 				<h3>Calyptra Watch & Guard</h3>
-				<p>Providing discreet investigative services to distinguished clients since 1923. Established tradition, modern methods.</p>
+				<p>Providing discreet investigative services to distinguished clients since 1961. Established tradition, modern methods.</p>
 			</div>
 			<div class="footer-section">
 				<h3>Services</h3>
@@ -60,7 +58,7 @@
 						<img src="/images/sixth-history-white-alpha.png" alt="Sixth History Logo" />
 					</div>
 					<div class="disclaimer-text">
-						<p><a href="www.google.com">Common Logic Games</a> is independent from and unaffiliated with <a href="https://weatherfactory.biz/">Weather Factory</a>.</p>
+						<p><a href="https://store.steampowered.com/app/3869880/The_Matter_of_Being/">Common Logic</a> is independent from and unaffiliated with <a href="https://weatherfactory.biz/">Weather Factory</a>.</p>
 					</div>
 				</div>
 			</div>

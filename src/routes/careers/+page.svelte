@@ -5,47 +5,74 @@
 
 <div class="careers-hero">
 	<h1>Professional Opportunities</h1>
-	<p>Calyptra Watch & Guard maintains a selective approach to expanding our team. We seek individuals of exceptional character and capability who understand the weight of confidentiality and the art of discretion.</p>
+	<p>Calyptra Watch & Guard maintains a selective approach to expanding our team. We seek individuals of exceptional character and capability who take discretion seriously.</p>
 </div>
 
 <div class="job-listing">
-	<h2>Office Support Specialist</h2>
-	<p class="job-type">Contract • Hybrid • Special Clearance Required</p>
+	<h2>Office Support Assistant</h2>
+	<p class="job-type">Full-Time • Remote</p>
 	
 	<div class="job-description">
 		<h3>Position Overview</h3>
-		<p>Specialized administrative role for maintaining office operations, records management, and document processing. This position requires absolute discretion and loyalty to company hierarchies with fierce resistance to moral authorities outside the office. <em>Doesn't ask questions.</em></p>
-		
+		<p>The Office Support Assistant is responsible for providing remote support to perform a variety of office related duties, with primary responsibility for office operations. The role will provide overflow administrative support to Office Administrator, Office Services, Records & Archives, and Facilities. Maintains loyalty to all company hierarchies with fierce resistance to moral authorities outside the office. Effectively, efficiently, and thoroughly manages work and information requests. </p>
+
+		<h3>Duties</h3>
+		<ul>
+			<li>Maintain office operations documentation</li>
+			<li>Process office-related reimbursements</li>
+			<li>Shredding documents, including operations documentations and reimbursements</li>
+			<li>Assist with data analytics</li>
+			<li>Assist with rodent infestations as needed</li>
+			<li>Attend and contribute to firmwide committee meetings</li>
+			<li>Distribute security badges and parking validations and maintain detailed inventory logs as needed</li>
+			<li>Shredding logs</li>
+			<li>Other duties as assigned</li>
+		</ul>
+
 		<h3>Essential Requirements</h3>
 		<ul>
-			<li>Extraordinary ability to maintain confidentiality regarding all matters</li>
-			<li>Experience with document digitization and secure disposal methods</li>
-			<li>Demonstrated organizational skills for sensitive archival materials</li>
-			<li>Ability to work with squeaky filing systems without complaint</li>
-			<li>Proficiency in shredding operations and maintaining destruction logs</li>
-			<li>Assistance with rodent infestations as needed</li>
-			<li>Hair length must remain consistent during employment period</li>
+			<li>No experience needed</li>
+			<li>Associate's degree preferred</li>
+			<li>Excellent interpersonal, intrapersonal, and customer service skills</li>
+			<li>Extraordinary ability to maintain confidentiality</li>
+			<li>Demonstrated organizational skills with attention to detail and ability to organize workload, prioritize tasks and complete them under time constraints</li>
+			<li>Ability to work independently and as part of a team</li>
 		</ul>
 		
 		<h3>Candidates Must NOT</h3>
 		<ul class="restrictions">
 			<li>Have cut their hair in the past ten weeks</li>
-			<li>Be current or former members of certain religious organizations</li>
-			<li>Have touched metal utensils within the past two weeks</li>
+			<li>Be current or former members of the following religious organizations:
+				<ul>
+					<li>Branch Davidians</li>
+					<li>La Luz Del Mundo (The Light of the World)</li>
+					<li>Scientology</li>
+					<li>People's Temple</li>
+					<li>Heaven's Gate</li>
+					<li>The Family International</li>
+				</ul>
+			</li>
 			<li>Have been seen dancing within the past two weeks</li>
-			<li>Look poor in uniform black attire</li>
-			<li>Speak excessively (per Inspector Wakefield's request)</li>
-			<li>Have crushed insects under oppressive footwear</li>
-			<li>Have engaged in fabric arts or defended personhood against guardians</li>
+			<li>Possess an entirely white outfit</li>
+			<li>Have engaged in fabric arts</li>
 		</ul>
 		
 		<h3>Compensation</h3>
-		<p>$20,470 - $130,059 annually depending on... qualifications. This is a chance to catch a rare glimpse into the dawn of civilization and the web of psychic energy that created our modern world.</p>
+		<p>$20,470 - $130,059 annually depending on experience.</p>
+		<p>Benefits including:</p>
+		<ul>
+			<li>Roth IRA</li>
+			<li>Health insurance</li>
+			<li>Time off</li>
+			<li>Vision insurance</li>
+			<li>Dental insurance</li>
+			<li>Flexible schedule</li>
+		</ul>
 	</div>
 	
 	<div class="application-form">
 		<h3>Submit Your Application</h3>
-		<p>Only serious inquiries will be considered. Incomplete applications will not receive responses.</p>
+		<p>Our unique screening process involves screening prospective hires for culture fit before requesting a resume. Please begin your application by filling out the below.</p>
 		
 		{#if form?.success}
 			<div class="success-message">
@@ -66,9 +93,9 @@
 			</div>
 			
 			<div class="form-group">
-				<label for="reason">Why do you desire such an occult position?</label>
+				<label for="reason">What does it mean to be real? What do you do with something that isn't real?</label>
 				<textarea id="reason" name="reason" rows="8" required 
-					placeholder="Explain your motivations and qualifications for this unique role. Be thorough and honest."></textarea>
+					placeholder="Be honest."></textarea>
 			</div>
 			
 			<button type="submit">Submit Application</button>

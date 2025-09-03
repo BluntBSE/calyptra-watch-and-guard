@@ -8,12 +8,8 @@
 
 <div class="hero">
 	<div class="hero-content">
-		<h1>Truth Through Discretion</h1>
-		<p class="hero-subtitle">Since 1923, Calyptra Watch & Guard has provided confidential investigative services to discerning clients who require answers without questions.</p>
-		<div class="hero-buttons">
-			<a href="/careers" class="btn btn-primary">Positions Available</a>
-			<a href="/contact" class="btn btn-secondary">Arrange Consultation</a>
-		</div>
+		<h1>Your Security Experts</h1>
+		<p class="hero-subtitle">Since 1961, Calyptra Watch & Guard has provided confidential investigative and security services for clients. We provide expertise in interpersonal, intrapersonal, and liminal security. </p>
 	</div>
 </div>
 
@@ -45,16 +41,16 @@
 		<div class="why-choose-content">
 			<div class="why-choose-text">
 				<h2>Why Choose Calyptra Watch & Guard?</h2>
-				<p>In a world where reputation is paramount and discretion is invaluable, you need investigators who understand the weight of confidentiality and the art of subtlety.</p>
+				<p>Our team is trained in the management of unorthodox incursions. Our discretion is absolute, and your confidentiality is guaranteed.</p>
 				<ul>
-					<li><strong>Established Reputation:</strong> Nearly a century of service to distinguished clientele across industries and continents.</li>
-					<li><strong>Absolute Confidentiality:</strong> Our investigations remain sealed under attorney-client privilege and professional discretion.</li>
-					<li><strong>Methodical Approach:</strong> Every case approached with systematic thoroughness and attention to legal precedent.</li>
-					<li><strong>Selective Clientele:</strong> We maintain the right to accept only cases that align with our standards and capabilities.</li>
+					<li><strong>Established Reputation:</strong> Nearly a century of service to distinguished clientele across history.</li>
+					<li><strong>Methodical Approach:</strong> We approach every case with tried-and-true systems that can handle even the most unexpected situations.</li>
+					<li><strong>Select Clientele:</strong> We maintain the right to accept only cases that align with our standards and capabilities.</li>
 				</ul>
 			</div>
 			<div class="why-choose-image">
-				<img src="https://placekitten.com/500/400" alt="Vintage detective office" class="vintage-image">
+				<img src="/images/recovery.png" alt="Etruscan figure from the St. Petersburg Hermitage" class="vintage-image">
+				<p>CWG was involved in the recovery of this artifact during the 2007 incident at the St. Petersburg Hermitage</p>
 			</div>
 		</div>
 	</div>
@@ -66,15 +62,15 @@
 		<div class="testimonials-grid">
 			<div class="testimonial">
 				<blockquote>"The discretion and professionalism exhibited during our family matter was exemplary. Results were delivered exactly as promised, without unnecessary fanfare."</blockquote>
-				<cite>— Chairman Emeritus, Continental Banking Corporation</cite>
+				<cite>Chairman Emeritus, Continental Banking Corporation</cite>
 			</div>
 			<div class="testimonial">
 				<blockquote>"When our board required sensitive background verification, Calyptra's thoroughness and confidentiality proved invaluable to our decision-making process."</blockquote>
-				<cite>— Senior Partner, Whitmore & Associates</cite>
+				<cite>Senior Partner, Whitmore & Associates</cite>
 			</div>
 			<div class="testimonial">
-				<blockquote>"Their old-fashioned approach to client service combined with modern investigative techniques provided exactly what our situation required."</blockquote>
-				<cite>— Estate Administrator, Blackwood Trust</cite>
+				<blockquote>"Their old-fashioned approach to client service, their vast historical knowledge, and their revolutionary technologies were all of incredible help during our situation."</blockquote>
+				<cite>Estate Administrator, Blackwood Trust</cite>
 			</div>
 		</div>
 	</div>
