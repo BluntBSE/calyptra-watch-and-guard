@@ -1,45 +1,5 @@
 <script lang="ts">
-	let name = '';
-	let email = '';
-	let phone = '';
-	let matter = '';
-	let message = '';
-	let confidentiality = 'standard';
-	let isSubmitting = false;
-	let submitted = false;
-	let error = '';
-
-	async function handleSubmit(event: SubmitEvent) {
-		event.preventDefault();
-		
-		if (!name || !email || !matter || !message) {
-			error = 'Please complete all required fields before submitting.';
-			return;
-		}
-
-		if (!email.includes('@')) {
-			error = 'Please provide a valid correspondence address.';
-			return;
-		}
-
-		isSubmitting = true;
-		error = '';
-
-		try {
-			// Simulate secure form submission
-			await new Promise(resolve => setTimeout(resolve, 2000));
-			
-			console.log('Confidential inquiry submitted:', {
-				name, email, phone, matter, message, confidentiality
-			});
-
-			submitted = true;
-		} catch (err) {
-			error = 'Your inquiry could not be transmitted at this time. Please try again or contact us directly.';
-		} finally {
-			isSubmitting = false;
-		}
-	}
+	export let form;
 </script>
 
 <svelte:head>
@@ -47,12 +7,12 @@
 	<meta name="description" content="Contact Calyptra Watch & Guard for confidential consultations regarding private investigation services." />
 </svelte:head>
 
-{#if submitted}
+{#if form?.success}
 	<div class="success-message">
 		<div class="container">
 			<div class="success-content">
 				<h1>Inquiry Received</h1>
-				<p>Your confidential inquiry has been received and will be reviewed within 24 hours during business days. A member of our staff will contact you discretely to arrange a consultation if we determine we can assist with your matter.</p>
+				<p>{form.message}</p>
 				<p>Please ensure your provided contact information is secure, as our communications contain sensitive information.</p>
 				<div class="success-note">
 					<p><strong>Reference Number:</strong> CWG-{Date.now().toString().slice(-6)}</p>
@@ -77,10 +37,10 @@
 				<h2>Submit Confidential Inquiry</h2>
 				<p>Complete this form to begin the consultation process. All information transmitted securely and reviewed only by authorized personnel.</p>
 				
-				<form on:submit={handleSubmit} class="inquiry-form">
-					{#if error}
+				<form method="POST" class="inquiry-form">
+					{#if form?.error}
 						<div class="error-message" role="alert">
-							{error}
+							{form.error}
 						</div>
 					{/if}
 
@@ -90,7 +50,7 @@
 							<input
 								type="text"
 								id="name"
-								bind:value={name}
+								name="name"
 								required
 								placeholder="Your complete name"
 							/>
@@ -101,7 +61,7 @@
 							<input
 								type="tel"
 								id="phone"
-								bind:value={phone}
+								name="phone"
 								placeholder="Preferred contact number"
 							/>
 						</div>
@@ -112,7 +72,7 @@
 						<input
 							type="email"
 							id="email"
-							bind:value={email}
+							name="email"
 							required
 							placeholder="your.name@example.com"
 						/>
@@ -121,7 +81,7 @@
 
 					<div class="form-group">
 						<label for="matter">Nature of Matter *</label>
-						<select id="matter" bind:value={matter} required>
+						<select id="matter" name="matter" required>
 							<option value="">Please select...</option>
 							<option value="corporate">Corporate Investigation</option>
 							<option value="personal">Personal Surveillance</option>
@@ -135,7 +95,7 @@
 
 					<div class="form-group">
 						<label for="confidentiality">Confidentiality Level</label>
-						<select id="confidentiality" bind:value={confidentiality}>
+						<select id="confidentiality" name="confidentiality">
 							<option value="standard">Standard Professional Discretion</option>
 							<option value="enhanced">Enhanced Confidentiality Required</option>
 							<option value="maximum">Maximum Security - Anonymous Consultation</option>
@@ -147,7 +107,7 @@
 						<label for="message">Details of Inquiry *</label>
 						<textarea
 							id="message"
-							bind:value={message}
+							name="message"
 							required
 							rows="6"
 							placeholder="Please provide relevant details about your situation. Include any time constraints or special considerations. This information remains strictly confidential."
@@ -158,12 +118,8 @@
 						<p><strong>Confidentiality Notice:</strong> This inquiry form is transmitted via encrypted connection. All communications are protected under attorney-client privilege where applicable and professional investigator confidentiality agreements. We do not share client information with third parties under any circumstances.</p>
 					</div>
 
-					<button 
-						type="submit" 
-						class="submit-btn"
-						disabled={isSubmitting}
-					>
-						{isSubmitting ? 'Transmitting Securely...' : 'Submit Confidential Inquiry'}
+					<button type="submit" class="submit-btn">
+						Submit Confidential Inquiry
 					</button>
 				</form>
 			</div>

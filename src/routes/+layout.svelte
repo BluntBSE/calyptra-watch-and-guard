@@ -213,8 +213,7 @@
 		color:white;
 	}
 
-	.footer-section h3,
-	.footer-section h4 {
+	.footer-section h3 {
 		margin-bottom: 1.5rem;
 		color: #d4af37;
 		font-family: 'Times New Roman', serif;
@@ -265,9 +264,8 @@
 		padding: 1rem;
 	}
 
-	/* Fix alignment between h3 and h4 in footer sections */
-	.footer-section h3,
-	.footer-section h4 {
+	/* Fix alignment between h3 elements in footer sections */
+	.footer-section h3 {
 		margin-top: 0;
 		margin-bottom: 1.5rem;
 	}
