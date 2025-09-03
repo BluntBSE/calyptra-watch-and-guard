@@ -47,7 +47,19 @@
 		<h3>Submit Your Application</h3>
 		<p>Only serious inquiries will be considered. Incomplete applications will not receive responses.</p>
 		
-		<form id="applicationForm">
+		{#if form?.success}
+			<div class="success-message">
+				<p>✓ {form.message}</p>
+			</div>
+		{/if}
+		
+		{#if form?.error}
+			<div class="error-message">
+				<p>⚠ {form.error}</p>
+			</div>
+		{/if}
+		
+		<form method="POST">
 			<div class="form-group">
 				<label for="email">Email Address:</label>
 				<input type="email" id="email" name="email" required>
@@ -66,27 +78,7 @@
 </div>
 
 <script>
-	import { onMount } from 'svelte';
-	
-	onMount(() => {
-		const form = document.getElementById('applicationForm');
-		
-		if (form) {
-			form.addEventListener('submit', function(e) {
-				e.preventDefault();
-				
-				const email = document.getElementById('email').value;
-				const reason = document.getElementById('reason').value;
-				
-				console.log('=== APPLICATION SUBMITTED ===');
-				console.log('Email:', email);
-				console.log('Reason:', reason);
-				
-				alert('Your application has been received. Please check your email for further instructions.');
-				form.reset();
-			});
-		}
-	});
+	export let form;
 </script>
 
 <style>
@@ -261,5 +253,25 @@
 		background: #b8941f;
 		transform: translateY(-2px);
 		box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+	}
+	
+	.success-message {
+		background: linear-gradient(135deg, #0d4d0d, #1a4d1a);
+		border: 1px solid #2d5d2d;
+		border-radius: 4px;
+		padding: 1rem;
+		margin-bottom: 2rem;
+		color: #9fd99f;
+		font-family: 'Courier New', monospace;
+	}
+	
+	.error-message {
+		background: linear-gradient(135deg, #4d0d0d, #4d1a1a);
+		border: 1px solid #5d2d2d;
+		border-radius: 4px;
+		padding: 1rem;
+		margin-bottom: 2rem;
+		color: #f99f9f;
+		font-family: 'Courier New', monospace;
 	}
 </style>

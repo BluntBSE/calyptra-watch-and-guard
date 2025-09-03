@@ -18,6 +18,22 @@ Thumbs.db
 !.env.example
 !.env.test
 
+# Database files (contain user data)
+applicants.db
+*.db
+
+# CSV exports (contain user data)
+*.csv
+opted-in-applicants-*.csv
+all-applicants-*.csv
+
+# Deployment scripts with credentials
+deploy.sh
+
+# Logs
+logs/
+*.log
+
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
