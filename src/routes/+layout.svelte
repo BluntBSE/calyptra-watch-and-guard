@@ -6,9 +6,14 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<title>Calyptra Watch & Guard - Discreet Private Investigations</title>
-	<meta name="description" content="Calyptra Watch & Guard provides confidential private investigation services for discerning clients. Established tradition of discretion and results." />
+	<title>Calyptra Watch & Guard - Secure Since 1961</title>
+	<meta name="description" content="Calyptra Watch & Guard provides confidential private investigation services and assistance with unorthodox intruders." />
+	{@html `<!-- ALIIS SI LICET, TIBI NON LICET |
+	watchandguard.us/access - ARCHIVE1971-->`}
 </svelte:head>
+
+{@html `<!-- ALIIS SI LICET, TIBI NON LICET |
+	watchandguard.us/access - ARCHIVE1971-->`}
 
 <div class="app">
 	<header>
@@ -17,7 +22,7 @@
 				<div class="logo">
 					<a href="/">
 						<h1>Calyptra Watch & Guard</h1>
-						<span class="tagline">Private Investigations Since 1923</span>
+						<span class="tagline">Secure Since 1961</span>
 					</a>
 				</div>
 				<ul class="nav-links">
@@ -42,19 +47,22 @@
 				<p>Providing discreet investigative services to distinguished clients since 1923. Established tradition, modern methods.</p>
 			</div>
 			<div class="footer-section">
-				<h4>Services</h4>
+				<h3>Services</h3>
 				<ul>
 					<li>Corporate Investigations</li>
 					<li>Personal Surveillance</li>
-					<li>Background Verification</li>
 					<li>Asset Recovery</li>
 				</ul>
 			</div>
 			<div class="footer-section">
-				<h4>Contact</h4>
-				<p>Telephone: Regent 4-7829</p>
-				<p>Post: investigations@calyptra.com</p>
-				<p>Available by appointment</p>
+				<div class="disclaimer-content">
+					<div class="disclaimer-image">
+						<img src="/images/sixth-history-white-alpha.png" alt="Sixth History Logo" />
+					</div>
+					<div class="disclaimer-text">
+						<p><a href="www.google.com">Common Logic Games</a> is independent from and unaffiliated with <a href="https://weatherfactory.biz/">Weather Factory</a>.</p>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="footer-bottom">
@@ -203,6 +211,9 @@
 		gap: 3rem;
 		padding: 4rem 3rem 3rem;
 	}
+	.footer-section a{
+		color:white;
+	}
 
 	.footer-section h3,
 	.footer-section h4 {
@@ -240,6 +251,51 @@
 		font-family: 'Courier New', monospace;
 		font-size: 0.9rem;
 		line-height: 1.6;
+	}
+
+	.footer-section img {
+		max-width: 100px;
+		height:auto;
+		margin: 10px 0;
+	}
+
+	/* Book-like disclaimer layout */
+	.disclaimer-content {
+		display: flex;
+		align-items: flex-start;
+		gap: 1.5rem;
+		padding: 1rem;
+	}
+
+	/* Fix alignment between h3 and h4 in footer sections */
+	.footer-section h3,
+	.footer-section h4 {
+		margin-top: 0;
+		margin-bottom: 1.5rem;
+	}
+
+	.disclaimer-image {
+		flex-shrink: 0;
+		width: 80px;
+	}
+
+	.disclaimer-image img {
+		width: 100%;
+		height: auto;
+		opacity: 0.8;
+		filter: brightness(0.9);
+	}
+
+	.disclaimer-text {
+		flex: 1;
+		padding-left: 0.5rem;
+	}
+
+	.disclaimer-text p {
+		margin: 0.25rem 0;
+		font-size: 0.85rem;
+		color: #c0c0c0;
+		line-height: 1.4;
 	}
 
 	.footer-bottom {

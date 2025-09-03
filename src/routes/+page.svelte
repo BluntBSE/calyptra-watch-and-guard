@@ -22,19 +22,14 @@
 		<h2>Our Specialized Services</h2>
 		<div class="services-grid">
 			<div class="service-card">
-				<div class="service-icon">�</div>
+				<div class="service-icon">📧</div>
 				<h3>Corporate Investigations</h3>
 				<p>Discreet inquiries into matters of corporate malfeasance, industrial espionage, and executive background verification for boards and stakeholders.</p>
 			</div>
 			<div class="service-card">
-				<div class="service-icon">�</div>
+				<div class="service-icon">🔍</div>
 				<h3>Personal Surveillance</h3>
 				<p>Comprehensive observation services conducted with the utmost discretion for matrimonial, custody, and personal security matters.</p>
-			</div>
-			<div class="service-card">
-				<div class="service-icon">�️</div>
-				<h3>Background Verification</h3>
-				<p>Thorough investigation of personal and professional histories, affiliations, and character references for high-stakes decisions.</p>
 			</div>
 			<div class="service-card">
 				<div class="service-icon">💼</div>

@@ -27,6 +27,10 @@ applicants.db
 opted-in-applicants-*.csv
 all-applicants-*.csv
 
+# PDFs (ARG content - track selectively)
+# Add specific PDFs you want to exclude, like:
+# static/pdfs/secret-document.pdf
+
 # Deployment scripts with credentials
 deploy.sh
 
