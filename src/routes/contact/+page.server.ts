@@ -1,11 +1,14 @@
 import { fail } from '@sveltejs/kit';
-import nodemailer from 'nodemailer';
+import sgMail from '@sendgrid/mail';
 import type { Actions } from './$types';
 import dotenv from 'dotenv';
 import { saveApplicant } from '$lib/database.js';
 
 // Load environment variables
 dotenv.config();
+
+// Initialize SendGrid
+sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
 
 export const actions: Actions = {
 	default: async ({ request }) => {
@@ -25,17 +28,6 @@ export const actions: Actions = {
 			return fail(400, { error: 'Please provide a valid correspondence address.' });
 		}
 
-		// Create transporter using Dreamhost SMTP
-		const transporter = nodemailer.createTransport({
-			host: process.env.EMAIL_HOST || 'smtp.dreamhost.com',
-			port: parseInt(process.env.EMAIL_PORT || '587'),
-			secure: process.env.EMAIL_SECURE === 'true',
-			auth: {
-				user: process.env.EMAIL_USER,
-				pass: process.env.EMAIL_PASS
-			}
-		});
-
 		// Generate timestamp
 		const timestamp = new Date().toLocaleString('en-US', {
 			timeZone: 'America/New_York',
@@ -49,7 +41,7 @@ export const actions: Actions = {
 		// Create professional contact form email
 		const contactEmail = `
 Subject: New Client Inquiry - ${matter}
-From: Calyptra Watch & Guard <${process.env.EMAIL_USER}>
+From: Calyptra Watch & Guard <${process.env.EMAIL_FROM}>
 To: Contact <contact@watchandguard.us>
 Date: ${timestamp}
 
@@ -83,15 +75,15 @@ Est. 1923 | "Aliis Si Licet, Tibi Non Licet"
 `;
 
 		try {
-			// Send to both email addresses
-			await transporter.sendMail({
-				from: process.env.EMAIL_USER,
+			// Send to both email addresses using SendGrid
+			await sgMail.send({
+				from: process.env.EMAIL_FROM,
 				to: ['contact@watchandguard.us', 'to.rowan.meyer@gmail.com'],
 				subject: `New Client Inquiry - ${matter}`,
 				text: contactEmail
 			});
 
-			// Save contact inquiry to applicants table (using available function)
+			// Save contact inquiry to database
 			try {
 				await saveApplicant(email, `CONTACT: ${matter} | ${name} | ${phone || 'No phone'} | ${message.substring(0, 200)}...`);
 				console.log('Contact saved to database:', email);
