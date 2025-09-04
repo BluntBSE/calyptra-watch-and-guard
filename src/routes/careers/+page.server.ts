@@ -1,11 +1,14 @@
 import { fail } from '@sveltejs/kit';
-import nodemailer from 'nodemailer';
+import sgMail from '@sendgrid/mail';
 import type { Actions } from './$types';
 import dotenv from 'dotenv';
 import { saveApplicant } from '$lib/database.js';
 
 // Load environment variables
 dotenv.config();
+
+// Initialize SendGrid
+sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
 
 export const actions: Actions = {
 	default: async ({ request }) => {
@@ -17,23 +20,10 @@ export const actions: Actions = {
 			return fail(400, { error: 'Email and reason are required' });
 		}
 
-		// Debug: Log environment variables (remove in production)
-		console.log('Email config:', {
-			host: process.env.EMAIL_HOST,
-			port: process.env.EMAIL_PORT,
-			user: process.env.EMAIL_USER,
-			hasPassword: !!process.env.EMAIL_PASS
-		});
-
-		// Create transporter using Dreamhost SMTP
-		const transporter = nodemailer.createTransport({
-			host: process.env.EMAIL_HOST || 'smtp.dreamhost.com',
-			port: parseInt(process.env.EMAIL_PORT || '587'),
-			secure: process.env.EMAIL_SECURE === 'true', // false for STARTTLS
-			auth: {
-				user: process.env.EMAIL_USER,
-				pass: process.env.EMAIL_PASS
-			}
+		// Debug: Log SendGrid config
+		console.log('SendGrid config:', {
+			hasApiKey: !!process.env.SENDGRID_API_KEY,
+			from: process.env.EMAIL_FROM
 		});
 
 		// Generate timestamp
@@ -222,12 +212,10 @@ export const actions: Actions = {
 		`;
 
 		try {
-			// Verify connection first
-			await transporter.verify();
-			console.log('SMTP connection verified successfully');
+			console.log('SendGrid API ready');
 
 			const mailOptions = {
-				from: `"Margaret Chen - HR Director" <${process.env.EMAIL_USER}>`,
+				from: `"Margaret Chen - HR Director" <${process.env.EMAIL_FROM}>`,
 				to: email, // Send to the applicant
 				// Uncomment the line below and add your personal email to test delivery
 				// to: 'your-personal-email@gmail.com',
@@ -326,13 +314,13 @@ Calyptra Watch & Guard
 				subject: mailOptions.subject
 			});
 
-			const info = await transporter.sendMail(mailOptions);
+			const info = await sgMail.send(mailOptions);
 			
 			console.log('Email sent successfully!');
-			console.log('Message ID:', info.messageId);
-			console.log('Response:', info.response);
-			console.log('Accepted:', info.accepted);
-			console.log('Rejected:', info.rejected);
+			console.log('Message ID:', info[0].headers?.['x-message-id']);
+			console.log('Response:', info[0].statusCode);
+			console.log('Accepted:', [email]);
+			console.log('Rejected:', []);
 
 			// Save to database after successful email send
 			try {
