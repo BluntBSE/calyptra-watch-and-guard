@@ -93,7 +93,7 @@
 			</div>
 			
 			<div class="form-group">
-				<label for="reason">What does it mean to be real? What do you do with something that isn't real?</label>
+				<label for="reason">Where should the pursuit of knowledge stop?</label>
 				<textarea id="reason" name="reason" rows="8" required 
 					placeholder="Be honest."></textarea>
 			</div>
