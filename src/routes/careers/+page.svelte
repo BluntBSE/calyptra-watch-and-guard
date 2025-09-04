@@ -95,7 +95,7 @@
 			<div class="form-group">
 				<label for="reason">Where should the pursuit of knowledge stop?</label>
 				<textarea id="reason" name="reason" rows="8" required 
-					placeholder="Be honest."></textarea>
+					placeholder="Share a personal example."></textarea>
 			</div>
 			
 			<button type="submit">Submit Application</button>
