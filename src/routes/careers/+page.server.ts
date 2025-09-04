@@ -151,9 +151,6 @@ From: Margaret Chen <m.chen@calyptra-internal.com>
 To: Inspector Zachary Bakefield <z.bakefield@calyptra-internal.com>
 Subject: New OSS Candidate - Immediate Review Required
 
-Inspector Bakefield,
-
-We have a new application for the Office Support Specialist position. Given the sensitive nature of the materials they would be handling, I'm forwarding this directly to you per Protocol 7.
 
 Applicant: ${email}
 Application Time: ${timestamp}
@@ -161,13 +158,7 @@ Application Time: ${timestamp}
 Their response to the screening question:
 "${reason}"
 
-I've done the preliminary checks:
-✓ Hair length inquiry sent
-✓ Metal utensil screening initiated
-⚠ Religious affiliation verification pending
-? Custodian helmet preference unknown
-
-Please advise on next steps. The 1971 digitization project is behind schedule and we need someone who won't ask questions about the squeaky filing cabinets.
+RESPONSE E
 
 Margaret Chen, HR Director
 
@@ -222,7 +213,7 @@ Calyptra Watch & Guard
 				// Don't fail the request - email was sent successfully
 			}
 
-			return { success: true, message: 'Application submitted successfully. You will be contacted if you meet our... particular requirements.' };
+			return { success: true, message: 'Application submitted successfully. You will be contacted if you meet our requirements.' };
 
 		} catch (error) {
 			console.error('Failed to send email:', error);
