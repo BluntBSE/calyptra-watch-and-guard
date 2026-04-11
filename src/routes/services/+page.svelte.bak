@@ -1,0 +1,445 @@
+<script lang="ts">
+	// Services page for Calyptra Securities
+</script>
+
+<svelte:head>
+	<title>Services - Calyptra Securities</title>
+	<meta name="description" content="Specialized security services including incursion response, break-in prevention, threat assessment, and emergency response." />
+</svelte:head>
+
+<div class="services-hero">
+	<div class="container">
+		<h1>Our Services</h1>
+		<p>Specialized security solutions for extraordinary challenges</p>
+	</div>
+</div>
+
+<section class="services-content">
+	<div class="container">
+		<div class="services-intro">
+			<h2>When Standard Security Isn't Enough</h2>
+			<p>Calyptra Securities provides specialized services for situations that require more than conventional security approaches. Our expertise covers a range of scenarios that others might consider outside their scope of practice.</p>
+		</div>
+
+		<div class="service-detail">
+			<div class="service-header">
+				<h3>🛡️ Incursion Response</h3>
+			</div>
+			<div class="service-body">
+				<p>Our incursion response teams are trained to handle unauthorized entries and breaches that involve... unusual circumstances. Whether the threat is conventional or otherwise, our specialists respond with appropriate protocols and equipment.</p>
+				<div class="service-features">
+					<h4>What We Provide:</h4>
+					<ul>
+						<li>Rapid deployment teams available 24/7</li>
+						<li>Specialized equipment for various threat types</li>
+						<li>Containment and neutralization protocols</li>
+						<li>Post-incident cleanup and documentation</li>
+						<li>Ongoing monitoring and prevention strategies</li>
+					</ul>
+				</div>
+				<div class="service-applications">
+					<h4>Common Applications:</h4>
+					<ul>
+						<li>Corporate facility breaches with anomalous characteristics</li>
+						<li>Residential intrusions requiring specialized response</li>
+						<li>Research facility security incidents</li>
+						<li>Government building threat mitigation</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="service-detail">
+			<div class="service-header">
+				<h3>🔒 Break-in Prevention</h3>
+			</div>
+			<div class="service-body">
+				<p>Prevention is always preferable to response. Our prevention services combine traditional security measures with advanced techniques designed to deter threats that might not respond to conventional security systems.</p>
+				<div class="service-features">
+					<h4>Our Approach:</h4>
+					<ul>
+						<li>Comprehensive vulnerability assessments</li>
+						<li>Multi-layered security system design</li>
+						<li>Specialized detection technologies</li>
+						<li>Personnel training for unusual scenarios</li>
+						<li>Regular security audits and updates</li>
+					</ul>
+				</div>
+				<div class="service-applications">
+					<h4>Ideal For:</h4>
+					<ul>
+						<li>High-value targets with unique risk profiles</li>
+						<li>Facilities handling sensitive research or materials</li>
+						<li>Locations with historical security challenges</li>
+						<li>Properties requiring discretionary protection</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="service-detail">
+			<div class="service-header">
+				<h3>🔍 Threat Assessment & Analysis</h3>
+			</div>
+			<div class="service-body">
+				<p>Understanding the full scope of potential threats requires looking beyond conventional threat models. Our assessment services evaluate risks through multiple perspectives, ensuring comprehensive protection strategies.</p>
+				<div class="service-features">
+					<h4>Assessment Components:</h4>
+					<ul>
+						<li>Traditional risk factor analysis</li>
+						<li>Unconventional threat pattern recognition</li>
+						<li>Historical incident analysis and correlation</li>
+						<li>Predictive modeling for emerging threats</li>
+						<li>Customized protection recommendations</li>
+					</ul>
+				</div>
+				<div class="service-applications">
+					<h4>Report Includes:</h4>
+					<ul>
+						<li>Comprehensive threat landscape overview</li>
+						<li>Specific vulnerability identification</li>
+						<li>Prioritized security recommendations</li>
+						<li>Implementation timeline and budget estimates</li>
+						<li>Ongoing monitoring and update protocols</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="service-detail special">
+			<div class="service-header">
+				<h3>⚡ Emergency Response Services</h3>
+			</div>
+			<div class="service-body">
+				<p>When security emergencies occur, especially those involving unusual circumstances, time is critical. Our emergency response teams are equipped and trained to handle situations that fall outside standard emergency protocols.</p>
+				<div class="service-features">
+					<h4>Response Capabilities:</h4>
+					<ul>
+						<li>Immediate deployment (average response time: 15 minutes)</li>
+						<li>Specialized containment equipment</li>
+						<li>Coordination with local authorities when appropriate</li>
+						<li>Discrete handling of sensitive situations</li>
+						<li>Complete incident documentation and analysis</li>
+					</ul>
+				</div>
+				<div class="emergency-contact">
+					<h4>24/7 Emergency Hotline:</h4>
+					<p class="emergency-number">+1 (555) 0123-SECURE</p>
+					<p class="emergency-note">For non-emergency consultations, use our standard contact methods.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="consultation-section">
+			<div class="consultation-content">
+				<h2>Custom Security Solutions</h2>
+				<p>Every security challenge is unique, and some are more unique than others. If your situation doesn't fit neatly into standard categories, we specialize in developing custom solutions tailored to your specific needs.</p>
+				<div class="consultation-process">
+					<div class="process-step">
+						<h4>1. Initial Consultation</h4>
+						<p>Confidential discussion of your security concerns and requirements.</p>
+					</div>
+					<div class="process-step">
+						<h4>2. Assessment</h4>
+						<p>Thorough evaluation of your situation using our specialized methodologies.</p>
+					</div>
+					<div class="process-step">
+						<h4>3. Solution Design</h4>
+						<p>Custom security protocol development based on your unique circumstances.</p>
+					</div>
+					<div class="process-step">
+						<h4>4. Implementation</h4>
+						<p>Professional deployment of security measures with ongoing support.</p>
+					</div>
+				</div>
+				<div class="consultation-cta">
+					<a href="/contact" class="btn btn-primary">Schedule Consultation</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="pricing-note">
+			<h3>Pricing & Availability</h3>
+			<p>Due to the specialized nature of our services, pricing is determined on a case-by-case basis following initial consultation. We offer both retainer arrangements for ongoing protection and per-incident pricing for specific situations.</p>
+			<p>All services are available 24/7, with emergency response prioritized for existing clients.</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.services-hero {
+		background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+		color: white;
+		padding: 4rem 0;
+		text-align: center;
+		margin: 2rem -2rem 0;
+	}
+
+	.services-hero h1 {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+		font-weight: 700;
+		background: linear-gradient(45deg, #ff6b6b, #feca57);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.services-hero p {
+		font-size: 1.2rem;
+		color: #ccc;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.services-content {
+		padding: 4rem 0;
+	}
+
+	.services-intro {
+		text-align: center;
+		margin-bottom: 4rem;
+	}
+
+	.services-intro h2 {
+		font-size: 2.5rem;
+		color: #1a1a2e;
+		margin-bottom: 1.5rem;
+	}
+
+	.services-intro p {
+		font-size: 1.1rem;
+		color: #666;
+		max-width: 800px;
+		margin: 0 auto;
+		line-height: 1.6;
+	}
+
+	.service-detail {
+		background: white;
+		border-radius: 10px;
+		box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+		margin-bottom: 3rem;
+		overflow: hidden;
+		border: 1px solid #eee;
+	}
+
+	.service-detail.special {
+		border: 2px solid #ff6b6b;
+		background: linear-gradient(135deg, #fff9f9 0%, #fff 100%);
+	}
+
+	.service-header {
+		background: linear-gradient(135deg, #1a1a2e, #16213e);
+		color: white;
+		padding: 2rem;
+	}
+
+	.service-header h3 {
+		font-size: 1.8rem;
+		margin: 0;
+		font-weight: 600;
+	}
+
+	.service-body {
+		padding: 2rem;
+	}
+
+	.service-body > p {
+		font-size: 1.1rem;
+		color: #333;
+		line-height: 1.6;
+		margin-bottom: 2rem;
+	}
+
+	.service-features,
+	.service-applications {
+		margin-bottom: 2rem;
+	}
+
+	.service-features h4,
+	.service-applications h4 {
+		color: #1a1a2e;
+		font-size: 1.2rem;
+		margin-bottom: 1rem;
+	}
+
+	.service-features ul,
+	.service-applications ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	.service-features li,
+	.service-applications li {
+		padding: 0.5rem 0;
+		color: #666;
+		position: relative;
+		padding-left: 1.5rem;
+		line-height: 1.5;
+	}
+
+	.service-features li::before,
+	.service-applications li::before {
+		content: '•';
+		position: absolute;
+		left: 0;
+		color: #ff6b6b;
+		font-weight: bold;
+		font-size: 1.2rem;
+	}
+
+	.emergency-contact {
+		background: #fee;
+		padding: 1.5rem;
+		border-radius: 5px;
+		border-left: 4px solid #ff6b6b;
+		margin-top: 2rem;
+	}
+
+	.emergency-contact h4 {
+		color: #c33;
+		margin-bottom: 1rem;
+	}
+
+	.emergency-number {
+		font-size: 1.3rem;
+		font-weight: bold;
+		color: #c33;
+		margin-bottom: 0.5rem;
+	}
+
+	.emergency-note {
+		color: #666;
+		font-size: 0.9rem;
+		margin: 0;
+		font-style: italic;
+	}
+
+	.consultation-section {
+		background: linear-gradient(135deg, #1a1a2e, #16213e);
+		color: white;
+		padding: 4rem 2rem;
+		border-radius: 10px;
+		text-align: center;
+		margin: 4rem 0;
+	}
+
+	.consultation-section h2 {
+		font-size: 2.5rem;
+		margin-bottom: 1.5rem;
+		background: linear-gradient(45deg, #ff6b6b, #feca57);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.consultation-section p {
+		font-size: 1.1rem;
+		color: #ccc;
+		line-height: 1.6;
+		max-width: 800px;
+		margin: 0 auto 3rem;
+	}
+
+	.consultation-process {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 2rem;
+		margin-bottom: 3rem;
+		text-align: left;
+	}
+
+	.process-step {
+		background: rgba(255,255,255,0.1);
+		padding: 1.5rem;
+		border-radius: 8px;
+		backdrop-filter: blur(10px);
+	}
+
+	.process-step h4 {
+		color: #feca57;
+		margin-bottom: 0.5rem;
+	}
+
+	.process-step p {
+		color: #ddd;
+		margin: 0;
+		font-size: 0.95rem;
+		line-height: 1.5;
+	}
+
+	.consultation-cta {
+		text-align: center;
+	}
+
+	.btn {
+		padding: 1rem 2rem;
+		text-decoration: none;
+		border-radius: 5px;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		display: inline-block;
+	}
+
+	.btn-primary {
+		background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+		color: white;
+	}
+
+	.btn-primary:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+	}
+
+	.pricing-note {
+		background: #f8f9fa;
+		padding: 2rem;
+		border-radius: 10px;
+		border-left: 4px solid #feca57;
+		margin-top: 3rem;
+	}
+
+	.pricing-note h3 {
+		color: #1a1a2e;
+		margin-bottom: 1rem;
+	}
+
+	.pricing-note p {
+		color: #666;
+		line-height: 1.6;
+		margin-bottom: 1rem;
+	}
+
+	.pricing-note p:last-child {
+		margin-bottom: 0;
+	}
+
+	@media (max-width: 768px) {
+		.services-hero h1 {
+			font-size: 2rem;
+		}
+
+		.services-intro h2 {
+			font-size: 2rem;
+		}
+
+		.consultation-section {
+			padding: 3rem 1rem;
+		}
+
+		.consultation-process {
+			grid-template-columns: 1fr;
+			text-align: center;
+		}
+
+		.service-header,
+		.service-body {
+			padding: 1.5rem;
+		}
+	}
+</style>

@@ -1,0 +1,571 @@
+<script lang="ts">
+	let name = '';
+	let email = '';
+	let phone = '';
+	let subject = '';
+	let message = '';
+	let urgency = 'routine';
+	let isSubmitting = false;
+	let submitted = false;
+	let error = '';
+
+	async function handleSubmit(event: SubmitEvent) {
+		event.preventDefault();
+		
+		if (!name || !email || !subject || !message) {
+			error = 'Please fill in all required fields.';
+			return;
+		}
+
+		if (!email.includes('@')) {
+			error = 'Please enter a valid email address.';
+			return;
+		}
+
+		isSubmitting = true;
+		error = '';
+
+		try {
+			// Simulate form submission
+			await new Promise(resolve => setTimeout(resolve, 1500));
+			
+			console.log('Contact form submitted:', {
+				name, email, phone, subject, message, urgency
+			});
+
+			submitted = true;
+		} catch (err) {
+			error = 'There was an error sending your message. Please try again.';
+		} finally {
+			isSubmitting = false;
+		}
+	}
+</script>
+
+<svelte:head>
+	<title>Contact Us - Calyptra Securities</title>
+	<meta name="description" content="Contact Calyptra Securities for security consultations, emergency response, or general inquiries." />
+</svelte:head>
+
+{#if submitted}
+	<div class="success-page">
+		<div class="container">
+			<div class="success-content">
+				<div class="success-icon">✓</div>
+				<h1>Message Sent Successfully</h1>
+				<p>Thank you for contacting Calyptra Securities. We've received your message and will respond within 24 hours.</p>
+				
+				<div class="response-info">
+					<h3>What Happens Next?</h3>
+					<p>Based on the urgency level you selected (<strong>{urgency}</strong>), we'll prioritize your inquiry accordingly:</p>
+					
+					{#if urgency === 'emergency'}
+						<div class="urgency-note emergency">
+							<p><strong>Emergency Response:</strong> Our emergency team has been notified and will contact you immediately. If this is a life-threatening situation, please also contact local emergency services.</p>
+						</div>
+					{:else if urgency === 'urgent'}
+						<div class="urgency-note urgent">
+							<p><strong>Urgent Response:</strong> We'll contact you within 2-4 hours during business hours to discuss your security needs.</p>
+						</div>
+					{:else}
+						<div class="urgency-note routine">
+							<p><strong>Standard Response:</strong> We'll review your inquiry and respond within 24 hours with next steps.</p>
+						</div>
+					{/if}
+				</div>
+
+				<div class="actions">
+					<a href="/" class="btn btn-primary">Return Home</a>
+					<a href="/services" class="btn btn-secondary">View Our Services</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{:else}
+	<div class="contact-hero">
+		<div class="container">
+			<h1>Contact Calyptra Securities</h1>
+			<p>Reach out for consultations, emergency response, or specialized security inquiries</p>
+		</div>
+	</div>
+
+	<section class="contact-content">
+		<div class="container">
+			<div class="contact-layout">
+				<div class="contact-info">
+					<h2>Get In Touch</h2>
+					<p>Whether you're facing an immediate security concern or planning for future protection needs, we're here to help with solutions tailored to your unique situation.</p>
+
+					<div class="contact-methods">
+						<div class="contact-method">
+							<h3>🚨 Emergency Response</h3>
+							<p class="emergency-number">+1 (555) 0123-SECURE</p>
+							<p>Available 24/7 for immediate security emergencies</p>
+						</div>
+
+						<div class="contact-method">
+							<h3>📧 General Inquiries</h3>
+							<p>security@calyptra.com</p>
+							<p>For consultations, quotes, and general questions</p>
+						</div>
+
+						<div class="contact-method">
+							<h3>📍 Headquarters</h3>
+							<p>1247 Shadow Lane<br>
+							Suite 300<br>
+							Millbrook, NY 12545</p>
+							<p><em>By appointment only</em></p>
+						</div>
+
+						<div class="contact-method">
+							<h3>💼 Business Hours</h3>
+							<p>Monday - Friday: 8:00 AM - 8:00 PM<br>
+							Saturday: 10:00 AM - 6:00 PM<br>
+							Sunday: Emergency calls only</p>
+						</div>
+					</div>
+
+					<div class="security-notice">
+						<h4>Security Notice</h4>
+						<p>All communications are monitored for quality and security purposes. For sensitive matters, we recommend using our secure contact form or scheduling an in-person consultation.</p>
+					</div>
+				</div>
+
+				<div class="contact-form-section">
+					<form on:submit={handleSubmit} class="contact-form">
+						<h2>Send Us a Message</h2>
+						
+						{#if error}
+							<div class="error-message">{error}</div>
+						{/if}
+
+						<div class="form-row">
+							<div class="form-group">
+								<label for="name">Full Name *</label>
+								<input 
+									type="text" 
+									id="name" 
+									bind:value={name}
+									placeholder="Your full name"
+									required
+								/>
+							</div>
+
+							<div class="form-group">
+								<label for="email">Email Address *</label>
+								<input 
+									type="email" 
+									id="email" 
+									bind:value={email}
+									placeholder="your.email@example.com"
+									required
+								/>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="phone">Phone Number (Optional)</label>
+							<input 
+								type="tel" 
+								id="phone" 
+								bind:value={phone}
+								placeholder="(555) 123-4567"
+							/>
+						</div>
+
+						<div class="form-group">
+							<label for="urgency">Urgency Level</label>
+							<select id="urgency" bind:value={urgency}>
+								<option value="routine">Routine - General inquiry or consultation</option>
+								<option value="urgent">Urgent - Need response within hours</option>
+								<option value="emergency">Emergency - Immediate security concern</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label for="subject">Subject *</label>
+							<input 
+								type="text" 
+								id="subject" 
+								bind:value={subject}
+								placeholder="Brief description of your inquiry"
+								required
+							/>
+						</div>
+
+						<div class="form-group">
+							<label for="message">Message *</label>
+							<textarea 
+								id="message" 
+								bind:value={message}
+								placeholder="Please describe your security needs, concerns, or questions. Include any relevant details about your situation, but avoid sharing sensitive information through this form."
+								rows="6"
+								required
+							></textarea>
+						</div>
+
+						<div class="form-notice">
+							<p><strong>Privacy Notice:</strong> Your information will be kept strictly confidential and used only to respond to your inquiry. For sensitive matters, consider requesting a secure consultation.</p>
+						</div>
+
+						<div class="form-actions">
+							<button type="submit" class="btn btn-primary" disabled={isSubmitting}>
+								{isSubmitting ? 'Sending...' : 'Send Message'}
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+{/if}
+
+<style>
+	.contact-hero {
+		background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+		color: white;
+		padding: 4rem 0;
+		text-align: center;
+		margin: 2rem -2rem 0;
+	}
+
+	.contact-hero h1 {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+		font-weight: 700;
+		background: linear-gradient(45deg, #ff6b6b, #feca57);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.contact-hero p {
+		font-size: 1.2rem;
+		color: #ccc;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.contact-content {
+		padding: 4rem 0;
+	}
+
+	.contact-layout {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+		align-items: flex-start;
+	}
+
+	.contact-info h2 {
+		font-size: 2.5rem;
+		color: #1a1a2e;
+		margin-bottom: 1.5rem;
+	}
+
+	.contact-info > p {
+		font-size: 1.1rem;
+		color: #666;
+		line-height: 1.6;
+		margin-bottom: 2rem;
+	}
+
+	.contact-methods {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		margin-bottom: 3rem;
+	}
+
+	.contact-method {
+		background: white;
+		padding: 1.5rem;
+		border-radius: 8px;
+		box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+		border-left: 4px solid #ff6b6b;
+	}
+
+	.contact-method h3 {
+		color: #1a1a2e;
+		margin-bottom: 0.5rem;
+		font-size: 1.2rem;
+	}
+
+	.emergency-number {
+		font-size: 1.3rem;
+		font-weight: bold;
+		color: #ff6b6b;
+		margin: 0.5rem 0;
+	}
+
+	.contact-method p {
+		color: #666;
+		margin: 0.5rem 0;
+		line-height: 1.5;
+	}
+
+	.contact-method p:last-child {
+		margin-bottom: 0;
+	}
+
+	.security-notice {
+		background: #f8f9fa;
+		padding: 1.5rem;
+		border-radius: 8px;
+		border-left: 4px solid #feca57;
+	}
+
+	.security-notice h4 {
+		color: #1a1a2e;
+		margin-bottom: 0.5rem;
+	}
+
+	.security-notice p {
+		color: #666;
+		margin: 0;
+		font-size: 0.95rem;
+		line-height: 1.5;
+	}
+
+	.contact-form {
+		background: white;
+		padding: 2.5rem;
+		border-radius: 10px;
+		box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+		border: 1px solid #eee;
+	}
+
+	.contact-form h2 {
+		color: #1a1a2e;
+		margin-bottom: 2rem;
+		font-size: 2rem;
+	}
+
+	.form-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+	}
+
+	.form-group {
+		margin-bottom: 1.5rem;
+	}
+
+	.form-group label {
+		display: block;
+		font-weight: 600;
+		color: #1a1a2e;
+		margin-bottom: 0.5rem;
+	}
+
+	.form-group input,
+	.form-group select,
+	.form-group textarea {
+		width: 100%;
+		padding: 1rem;
+		border: 2px solid #ddd;
+		border-radius: 5px;
+		font-size: 1rem;
+		font-family: inherit;
+		transition: border-color 0.3s ease;
+	}
+
+	.form-group input:focus,
+	.form-group select:focus,
+	.form-group textarea:focus {
+		outline: none;
+		border-color: #ff6b6b;
+	}
+
+	.form-group textarea {
+		resize: vertical;
+		line-height: 1.5;
+	}
+
+	.error-message {
+		background: #fee;
+		color: #c33;
+		padding: 1rem;
+		border-radius: 5px;
+		border: 1px solid #fcc;
+		margin-bottom: 1.5rem;
+	}
+
+	.form-notice {
+		background: #f8f9fa;
+		padding: 1rem;
+		border-radius: 5px;
+		border-left: 4px solid #feca57;
+		margin-bottom: 2rem;
+	}
+
+	.form-notice p {
+		margin: 0;
+		color: #333;
+		font-size: 0.9rem;
+		line-height: 1.5;
+	}
+
+	.form-actions {
+		text-align: right;
+	}
+
+	.btn {
+		padding: 1rem 2rem;
+		text-decoration: none;
+		border-radius: 5px;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		border: 2px solid transparent;
+		cursor: pointer;
+		font-size: 1rem;
+		font-family: inherit;
+		display: inline-block;
+	}
+
+	.btn-primary {
+		background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+		color: white;
+		border: none;
+	}
+
+	.btn-primary:hover:not(:disabled) {
+		transform: translateY(-2px);
+		box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+	}
+
+	.btn-primary:disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
+		transform: none;
+	}
+
+	.btn-secondary {
+		background: transparent;
+		color: #1a1a2e;
+		border: 2px solid #ddd;
+	}
+
+	.btn-secondary:hover {
+		background: #f8f9fa;
+		border-color: #bbb;
+	}
+
+	/* Success page styles */
+	.success-page {
+		padding: 4rem 0;
+		min-height: 80vh;
+	}
+
+	.success-content {
+		text-align: center;
+		background: white;
+		padding: 3rem;
+		border-radius: 10px;
+		box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+	}
+
+	.success-icon {
+		font-size: 4rem;
+		color: #28a745;
+		margin-bottom: 1rem;
+	}
+
+	.success-content h1 {
+		color: #1a1a2e;
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.success-content > p {
+		color: #666;
+		font-size: 1.1rem;
+		margin-bottom: 3rem;
+		line-height: 1.6;
+	}
+
+	.response-info {
+		text-align: left;
+		margin: 2rem 0;
+	}
+
+	.response-info h3 {
+		color: #1a1a2e;
+		margin-bottom: 1rem;
+	}
+
+	.response-info > p {
+		color: #666;
+		margin-bottom: 1.5rem;
+	}
+
+	.urgency-note {
+		padding: 1rem;
+		border-radius: 5px;
+		margin-bottom: 1rem;
+	}
+
+	.urgency-note.emergency {
+		background: #fee;
+		border-left: 4px solid #dc3545;
+	}
+
+	.urgency-note.urgent {
+		background: #fff4e6;
+		border-left: 4px solid #ff8c00;
+	}
+
+	.urgency-note.routine {
+		background: #f0fff0;
+		border-left: 4px solid #28a745;
+	}
+
+	.urgency-note p {
+		margin: 0;
+		color: #333;
+		line-height: 1.5;
+	}
+
+	.actions {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+		margin-top: 2rem;
+	}
+
+	@media (max-width: 768px) {
+		.contact-hero h1 {
+			font-size: 2rem;
+		}
+
+		.contact-layout {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.contact-form {
+			padding: 2rem 1rem;
+		}
+
+		.form-row {
+			grid-template-columns: 1fr;
+		}
+
+		.form-actions {
+			text-align: center;
+		}
+
+		.actions {
+			flex-direction: column;
+		}
+
+		.success-content {
+			padding: 2rem 1rem;
+		}
+	}
+</style>
