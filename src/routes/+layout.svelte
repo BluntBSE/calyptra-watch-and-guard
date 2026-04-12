@@ -5,18 +5,16 @@
 </script>
 
 <svelte:head>
-    <link rel="icon" href="{favicon}" />
+    <link rel="icon" href={favicon} />
     <title>Calyptra Watch & Guard - Secure Since 1961</title>
     <meta
         name="description"
         content="Calyptra Watch & Guard provides confidential private investigation services and assistance with unorthodox intruders."
     />
-    {@html `<!-- ALIIS SI LICET, TIBI NON LICET |
-	watchandguard.us/access - ARCHIVE1971-->`}
+    {@html `<!-- ALIIS SI LICET, TIBI NON LICET -->`}
 </svelte:head>
 
-{@html `<!-- ALIIS SI LICET, TIBI NON LICET |
-	watchandguard.us/access - ARCHIVE1971-->`}
+{@html `<!-- ALIIS SI LICET, TIBI NON LICET -->`}
 
 <div class="app">
     <header>
@@ -59,22 +57,12 @@
             <div class="footer-section">
                 <div class="disclaimer-content">
                     <div class="disclaimer-image">
-                        <img
-                            src="/images/sixth-history-white-alpha.png"
-                            alt="Sixth History Logo"
-                        />
-                    </div>
-                    <div class="disclaimer-text">
-                        <p>
-                            <a
-                                href="https://store.steampowered.com/app/3869880/The_Matter_of_Being/"
-                                >Common Logic</a
-                            >
-                            is independent from and unaffiliated with
-                            <a href="https://weatherfactory.biz/"
-                                >Weather Factory</a
-                            >.
-                        </p>
+                        <a href="/velvet">
+                            <img
+                                src="/images/sixth-history-white-alpha.png"
+                                alt="Sixth History Logo"
+                            />
+                        </a>
                     </div>
                 </div>
             </div>
@@ -87,6 +75,8 @@
         </div>
     </footer>
 </div>
+
+{@html `<!-- watchandguard.us/access - ARCHIVE1971 -->`}
 
 <style>
     :global(body) {

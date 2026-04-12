@@ -1,16 +1,12 @@
-This directory should contain your PDF files for the ARG.
+This directory should contain your PDF file for the ARG.
 
-The archive interface expects these files:
-- case-report-1971-001.pdf
-- evidence-log-1971-summer.pdf
-- interview-transcripts-batch-3.pdf
-- site-photos-restricted.pdf
-- final-report-1971-classified.pdf
+The archive interface expects this file:
+- case-report-1971.pdf
 
-Place your actual PDF files here with these exact names, or update the filenames in:
+Place your PDF here with this exact name, or update the filename in:
 /src/routes/archive/+page.svelte
 
 Files placed in this directory will be accessible at:
-https://your-domain.com/pdfs/filename.pdf
+https://your-domain.com/pdfs/case-report-1971.pdf
 
 All downloads are logged in the console for tracking purposes.

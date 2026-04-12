@@ -1,3 +1,34 @@
+<script lang="ts">
+    let copied = false;
+    let copyTimeout: ReturnType<typeof setTimeout>;
+
+    async function copyLink() {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            copied = true;
+            clearTimeout(copyTimeout);
+            copyTimeout = setTimeout(() => {
+                copied = false;
+            }, 2000);
+        } catch {
+            // Fallback for older browsers
+            const textArea = document.createElement("textarea");
+            textArea.value = window.location.href;
+            textArea.style.position = "fixed";
+            textArea.style.opacity = "0";
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+            copied = true;
+            clearTimeout(copyTimeout);
+            copyTimeout = setTimeout(() => {
+                copied = false;
+            }, 2000);
+        }
+    }
+</script>
+
 <svelte:head>
     <title>???</title>
     <meta name="robots" content="noindex, nofollow" />
@@ -22,9 +53,18 @@
                 <p class="secret-text">
                     You've found a secret. Use the link below to unlock the
                     <span class="highlight">'Velvet'</span> reward tier when
-                    supporting <em>The Matter of Being</em>, an upcoming game
-                    set in the world of <em>Cultist Simulator</em>. This link
-                    can be shared.
+                    supporting
+                    <a
+                        href="https://store.steampowered.com/app/3869880/The_Matter_of_Being/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><em>The Matter of Being</em></a
+                    >, an upcoming game set in the world of
+                    <a
+                        href="https://store.steampowered.com/app/718670/Cultist_Simulator/"
+                        target="_blank"
+                        rel="noopener noreferrer"><em>Cultist Simulator</em></a
+                    >. This link can be shared with others.
                 </p>
 
                 <div class="links">
@@ -38,15 +78,14 @@
                         Unlock the Velvet Tier on Kickstarter
                     </a>
 
-                    <a
-                        href="https://store.steampowered.com/app/3869880/The_Matter_of_Being/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="link steam-link"
+                    <button
+                        class="link copy-link"
+                        class:copied
+                        on:click={copyLink}
                     >
-                        <span class="link-icon">⬡</span>
-                        View on Steam
-                    </a>
+                        <span class="link-icon">{copied ? "✓" : "⬡"}</span>
+                        {copied ? "Link copied!" : "Copy shareable link"}
+                    </button>
 
                     <a
                         href="https://discord.gg/CAE6atnwqw"
@@ -209,6 +248,19 @@
         font-family: "Times New Roman", serif;
     }
 
+    .secret-text a {
+        color: #e8e6e3;
+        text-decoration: underline;
+        text-decoration-color: rgba(255, 198, 126, 0.4);
+        text-underline-offset: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .secret-text a:hover {
+        color: #ffc67e;
+        text-decoration-color: #ffc67e;
+    }
+
     .links {
         display: flex;
         flex-direction: column;
@@ -282,6 +334,27 @@
         background: rgba(255, 198, 126, 0.15);
         border-color: #ffc67e;
         box-shadow: 0 4px 30px rgba(255, 198, 126, 0.2);
+    }
+
+    .copy-link {
+        cursor: pointer;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        font-family: "Times New Roman", serif;
+        font-size: 0.95rem;
+        transition: all 0.35s ease;
+    }
+
+    .copy-link.copied {
+        border-color: rgba(144, 238, 144, 0.4);
+        color: #90ee90;
+        background: rgba(144, 238, 144, 0.08);
+    }
+
+    .copy-link.copied .link-icon {
+        color: #90ee90;
+        opacity: 1;
     }
 
     @media (max-width: 768px) {

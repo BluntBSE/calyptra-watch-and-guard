@@ -11,154 +11,168 @@
 </svelte:head>
 
 {#if form?.success}
-<div class="success-message">
-    <div class="container">
-        <div class="success-content">
-            <h1>Inquiry Received</h1>
-            <p>{form.message}</p>
-            <p>
-                Please ensure your provided contact information is secure, as
-                our communications contain sensitive information.
-            </p>
-            <div class="success-note">
+    <div class="success-message">
+        <div class="container">
+            <div class="success-content">
+                <h1>Inquiry Received</h1>
+                <p>{form.message}</p>
                 <p>
-                    <strong>Reference Number:</strong>
-                    CWG-{Date.now().toString().slice(-6)}
+                    Please check your email for further correspondence regarding
+                    your inquiry. If you do not see anything within a few
+                    minutes, please check your spam folder.
                 </p>
                 <p>
-                    <em
-                        >Please retain this reference number for your
-                        records.</em
-                    >
+                    In the meantime, please review <a href="/velvet"
+                        >this information</a
+                    >.
                 </p>
+                <div class="success-note">
+                    <p>
+                        <strong>Reference Number:</strong>
+                        CWG-{Date.now().toString().slice(-6)}
+                    </p>
+                    <p>
+                        <em
+                            >Please retain this reference number for your
+                            records.</em
+                        >
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 {:else}
-<div class="contact-hero">
-    <div class="container">
-        <h1>Confidential Consultation</h1>
-    </div>
-</div>
-
-<section class="contact-content">
-    <div class="container">
-        <div class="inquiry-form-section">
-            <h2>Submit Confidential Inquiry</h2>
-            <p>
-                Complete this form to begin the consultation process. All
-                information transmitted securely and reviewed only by authorized
-                personnel. In the event you do not engage our services, we will
-                delete all records, mental and tangible, related to your
-                inquiry.
-            </p>
-
-            <form method="POST" class="inquiry-form">
-                {#if form?.error}
-                <div class="error-message" role="alert">{form.error}</div>
-                {/if}
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            required
-                            placeholder="Your complete name"
-                        />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Telephone</label>
-                        <input
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            placeholder="Preferred contact number"
-                        />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Electronic Mail *</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        placeholder="your.name@example.com"
-                    />
-                    <small>Secure email address preferred</small>
-                </div>
-
-                <div class="form-group">
-                    <label for="matter">Nature of Matter *</label>
-                    <select id="matter" name="matter" required>
-                        <option value="">Please select...</option>
-                        <option value="corporate">
-                            Corporate Investigation
-                        </option>
-                        <option value="personal">Personal Surveillance</option>
-                        <option value="background">
-                            Background Verification
-                        </option>
-                        <option value="asset">Asset Recovery</option>
-                        <option value="matrimonial">Matrimonial Matter</option>
-                        <option value="estate">Estate Investigation</option>
-                        <option value="other">
-                            Other (specify in message)
-                        </option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="confidentiality">Confidentiality Level</label>
-                    <select id="confidentiality" name="confidentiality">
-                        <option value="standard">
-                            Standard Professional Discretion
-                        </option>
-                        <option value="enhanced">
-                            Enhanced Confidentiality Required
-                        </option>
-                        <option value="maximum">
-                            Maximum Security - Anonymous Consultation
-                        </option>
-                    </select>
-                    <small>Determines our communication protocols</small>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Details of Inquiry *</label>
-                    <textarea
-                        id="message"
-                        name="message"
-                        required
-                        rows="6"
-                        placeholder="Please provide relevant details about your situation. Include any time constraints or special considerations. This information remains strictly confidential."
-                    ></textarea>
-                </div>
-
-                <div class="form-notice">
-                    <p>
-                        <strong>Confidentiality Notice:</strong> This inquiry
-                        form is transmitted via encrypted connection. All
-                        communications are protected under attorney-client
-                        privilege where applicable and professional investigator
-                        confidentiality agreements. We do not share client
-                        information with third parties under any circumstances.
-                    </p>
-                </div>
-
-                <button type="submit" class="submit-btn">
-                    Submit Confidential Inquiry
-                </button>
-            </form>
+    <div class="contact-hero">
+        <div class="container">
+            <h1>Confidential Consultation</h1>
         </div>
     </div>
-</section>
+
+    <section class="contact-content">
+        <div class="container">
+            <div class="inquiry-form-section">
+                <h2>Submit Confidential Inquiry</h2>
+                <p>
+                    Complete this form to begin the consultation process. All
+                    information transmitted securely and reviewed only by
+                    authorized personnel. In the event you do not engage our
+                    services, we will delete all records, mental and tangible,
+                    related to your inquiry.
+                </p>
+
+                <form method="POST" class="inquiry-form">
+                    {#if form?.error}
+                        <div class="error-message" role="alert">
+                            {form.error}
+                        </div>
+                    {/if}
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                required
+                                placeholder="Your complete name"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telephone</label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="Preferred contact number"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Electronic Mail *</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            placeholder="your.name@example.com"
+                        />
+                        <small>Secure email address preferred</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="matter">Nature of Matter *</label>
+                        <select id="matter" name="matter" required>
+                            <option value="">Please select...</option>
+                            <option value="corporate">
+                                Corporate Investigation
+                            </option>
+                            <option value="personal"
+                                >Personal Surveillance</option
+                            >
+                            <option value="background">
+                                Background Verification
+                            </option>
+                            <option value="asset">Asset Recovery</option>
+                            <option value="matrimonial"
+                                >Matrimonial Matter</option
+                            >
+                            <option value="estate">Estate Investigation</option>
+                            <option value="other">
+                                Other (specify in message)
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confidentiality"
+                            >Confidentiality Level</label
+                        >
+                        <select id="confidentiality" name="confidentiality">
+                            <option value="standard">
+                                Standard Professional Discretion
+                            </option>
+                            <option value="enhanced">
+                                Enhanced Confidentiality Required
+                            </option>
+                            <option value="maximum">
+                                Maximum Security - Anonymous Consultation
+                            </option>
+                        </select>
+                        <small>Determines our communication protocols</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Details of Inquiry *</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            required
+                            rows="6"
+                            placeholder="Please provide relevant details about your situation. Include any time constraints or special considerations. This information remains strictly confidential."
+                        ></textarea>
+                    </div>
+
+                    <div class="form-notice">
+                        <p>
+                            <strong>Confidentiality Notice:</strong> This inquiry
+                            form is transmitted via encrypted connection. All communications
+                            are protected under attorney-client privilege where applicable
+                            and professional investigator confidentiality agreements.
+                            We do not share client information with third parties
+                            under any circumstances.
+                        </p>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Submit Confidential Inquiry
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
 {/if}
 
 <style>
@@ -252,6 +266,16 @@
     .success-note p {
         margin: 0.5rem 0;
         color: #ffc67e;
+    }
+
+    .success-content a {
+        color: #ffc67e;
+        text-decoration: underline;
+        transition: color 0.3s ease;
+    }
+
+    .success-content a:hover {
+        color: #fff;
     }
 
     .container {

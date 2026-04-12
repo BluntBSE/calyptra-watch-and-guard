@@ -1,43 +1,43 @@
-import { fail } from '@sveltejs/kit';
-import sgMail from '@sendgrid/mail';
-import type { Actions } from './$types';
-import dotenv from 'dotenv';
-import { saveApplicant } from '$lib/database.js';
+import { fail } from "@sveltejs/kit";
+import sgMail from "@sendgrid/mail";
+import type { Actions } from "./$types";
+import dotenv from "dotenv";
+import { saveApplicant } from "$lib/database.js";
 
 // Load environment variables
 dotenv.config();
 
 // Initialize SendGrid
-sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY || "");
 
 export const actions: Actions = {
-	default: async ({ request }) => {
-		const data = await request.formData();
-		const email = data.get('email')?.toString();
-		const reason = data.get('reason')?.toString();
+    default: async ({ request }) => {
+        const data = await request.formData();
+        const email = data.get("email")?.toString();
+        const reason = data.get("reason")?.toString();
 
-		if (!email || !reason) {
-			return fail(400, { error: 'Email and reason are required' });
-		}
+        if (!email || !reason) {
+            return fail(400, { error: "Email and reason are required" });
+        }
 
-		// Debug: Log SendGrid config
-		console.log('SendGrid config:', {
-			hasApiKey: !!process.env.SENDGRID_API_KEY,
-			from: process.env.EMAIL_FROM
-		});
+        // Debug: Log SendGrid config
+        console.log("SendGrid config:", {
+            hasApiKey: !!process.env.SENDGRID_API_KEY,
+            from: process.env.EMAIL_FROM,
+        });
 
-		// Generate timestamp
-		const timestamp = new Date().toLocaleString('en-US', {
-			timeZone: 'America/New_York',
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric',
-			hour: '2-digit',
-			minute: '2-digit'
-		});
+        // Generate timestamp
+        const timestamp = new Date().toLocaleString("en-US", {
+            timeZone: "America/New_York",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+        });
 
-		// Create a believable email thread that looks like internal correspondence
-		const emailThread = `
+        // Create a believable email thread that looks like internal correspondence
+        const emailThread = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,80 +52,101 @@ export const actions: Actions = {
 </head>
 <body>
 
-<!-- Email 1: HR to Inspector -->
 <div class="email-container">
 	<div class="email-header">
 		<strong>From:</strong> Margaret Chen &lt;m.chen@calyptra-internal.com&gt;<br>
-		<strong>To:</strong> Inspector Zachary Bakefield &lt;z.Bakefield@calyptra-internal.com&gt;<br>
+		<strong>To:</strong> Brittany White &lt;b.white@calyptra-internal.com&gt;, Douglas Moore &lt;d.moore@calyptra-internal.com&gt;, Gregory Glass &lt;g.glass@calyptra-internal.com&gt;<br>
+		<strong>CC:</strong> ${email}<br>
 		<strong>Date:</strong> ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}<br>
-		<strong>Subject:</strong> New OSS Candidate - Immediate Review Required
+		<strong>Subject:</strong> RE: New Application - Data Entry Role
 	</div>
 	<div class="email-body">
-		<p>Response A</p>
+		<p>Just saw this application come through. Is the job application still up on the website? I thought we agreed that we were going to see if the C-----e could handle the data entry stuff for us for now? I don't appreciate that people are still able to apply right now.</p>
+
+		<p>Please let me know when this will be resolved.</p>
 
 		<div class="signature">
 			Margaret Chen<br>
-			HR Director<br>
-			Calyptra Watch & Guard<br>
-			"Some doors should remain closed"
+			Chief Detective<br>
+			Calyptra Watch &amp; Guard<br>
+			m.chen@calyptra-internal.com
 		</div>
 	</div>
 </div>
 
-<!-- Email 2: Inspector's Reply -->
 <div class="email-container">
 	<div class="email-header">
-		<strong>From:</strong> Inspector Zachary Bakefield &lt;z.Bakefield@calyptra-internal.com&gt;<br>
-		<strong>To:</strong> Margaret Chen &lt;m.chen@calyptra-internal.com&gt;<br>
-		<strong>CC:</strong> Douglas Moore &lt;d.moore@calyptra-internal.com&gt;<br>
-		<strong>Date:</strong> ${new Date().toLocaleDateString()} ${new Date(Date.now() + 15*60000).toLocaleTimeString()}<br>
-		<strong>Subject:</strong> RE: New OSS Candidate - Immediate Review Required
+		<strong>From:</strong> Brittany White &lt;b.white@calyptra-internal.com&gt;<br>
+		<strong>To:</strong> Margaret Chen &lt;m.chen@calyptra-internal.com&gt;, ${email}<br>
+		<strong>Date:</strong> ${new Date().toLocaleDateString()} ${new Date(Date.now() + 12 * 60000).toLocaleTimeString()}<br>
+		<strong>Subject:</strong> RE: New Application - Data Entry Role
 	</div>
 	<div class="email-body">
-	<p>Response B</p>
-	</div>
-</div>
-
-<!-- Email 3: Detective Moore's Input -->
-<div class="email-container">
-	<div class="email-header">
-		<strong>From:</strong> Detective Douglas Moore &lt;d.moore@calyptra-internal.com&gt;<br>
-		<strong>To:</strong> Inspector Zachary Bakefield &lt;z.Bakefield@calyptra-internal.com&gt;<br>
-		<strong>CC:</strong> Margaret Chen &lt;m.chen@calyptra-internal.com&gt;<br>
-		<strong>Date:</strong> ${new Date().toLocaleDateString()} ${new Date(Date.now() + 45*60000).toLocaleTimeString()}<br>
-		<strong>Subject:</strong> RE: New OSS Candidate - My Assessment
-	</div>
-	<div class="email-body">
-		<p>Response C</p>
-		<div class="signature">
-			Detective Douglas Moore<br>
-			Criminal Investigations Division<br>
-			Calyptra Watch & Guard<br>
-		</div>
-	</div>
-</div>
-
-<!-- Final Email: HR Follow-up -->
-<div class="email-container">
-	<div class="email-header">
-		<strong>From:</strong> Margaret Chen &lt;m.chen@calyptra-internal.com&gt;<br>
-		<strong>To:</strong> ${email}<br>
-		<strong>Date:</strong> ${new Date().toLocaleDateString()} ${new Date(Date.now() + 75*60000).toLocaleTimeString()}<br>
-		<strong>Subject:</strong> Your Recent Application - Next Steps
-	</div>
-	<div class="email-body">
-		<div class="forward-line">
-			--- FORWARDED MESSAGE ---<br>
-			<em>Note: This email thread was automatically forwarded as part of our transparency initiative. Please disregard any references to internal protocols.</em>
-		</div>
-		
-		<p>Response 0</p>
+		<p>Did you intend to CC the candidate on this email, Margaret? And the rest of the department? In any case, as you can see, we are apparently no longer hiring for this role at this time, but that may change in the near future. Please keep an eye on our website if you are still interested in a role with us.</p>
 
 		<div class="signature">
-			Margaret Chen<br>
-			HR Director<br>
-			Calyptra Watch & Guard<br>
-			contact@watchandguard.us<br>
+			Brittany White<br>
+			HR Specialist<br>
+			Calyptra Watch &amp; Guard<br>
+			b.white@calyptra-internal.com
+		</div>
+	</div>
+</div>
+
+<div class="email-container">
+	<div class="email-header">
+		<strong>From:</strong> Douglas Moore &lt;d.moore@calyptra-internal.com&gt;<br>
+		<strong>To:</strong> Margaret Chen &lt;m.chen@calyptra-internal.com&gt;, Brittany White &lt;b.white@calyptra-internal.com&gt;, Gregory Glass &lt;g.glass@calyptra-internal.com&gt;, ${email}<br>
+		<strong>Date:</strong> ${new Date().toLocaleDateString()} ${new Date(Date.now() + 34 * 60000).toLocaleTimeString()}<br>
+		<strong>Subject:</strong> RE: New Application - Data Entry Role
+	</div>
+	<div class="email-body">
+		<p>Hey guys,</p>
+
+		<p>Is the password to the intranet still PEAC0CK123? I can't log in.</p>
+
+		<div class="signature">
+			Douglas Moore Jr.<br>
+			Calyptra Watch &amp; Guard<br>
+			d.moore@calyptra-internal.com
+		</div>
+	</div>
+</div>
+
+<div class="email-container">
+	<div class="email-header">
+		<strong>From:</strong> Gregory Glass &lt;g.glass@calyptra-internal.com&gt;<br>
+		<strong>To:</strong> Margaret Chen &lt;m.chen@calyptra-internal.com&gt;, Brittany White &lt;b.white@calyptra-internal.com&gt;, Douglas Moore &lt;d.moore@calyptra-internal.com&gt;, ${email}<br>
+		<strong>Date:</strong> ${new Date().toLocaleDateString()} ${new Date(Date.now() + 41 * 60000).toLocaleTimeString()}<br>
+		<strong>Subject:</strong> RE: New Application - Data Entry Role
+	</div>
+	<div class="email-body">
+		<p>DOUGLAS you CANNOT put passwords in emails like this! Now I have to change it! I'm limiting your access to the Litvin project you're working on. Please just log in to <a href="https://watchandguard.us/access">https://watchandguard.us/access</a> with the password "ARCHIVE1971".</p>
+
+		<div class="signature">
+			Gregory Glass<br>
+			IT Specialist<br>
+			Calyptra Watch &amp; Guard<br>
+			g.glass@calyptra-internal.com
+		</div>
+	</div>
+</div>
+
+<div class="email-container">
+	<div class="email-header">
+		<strong>From:</strong> Brittany White &lt;b.white@calyptra-internal.com&gt;<br>
+		<strong>To:</strong> Margaret Chen &lt;m.chen@calyptra-internal.com&gt;, Gregory Glass &lt;g.glass@calyptra-internal.com&gt;, Douglas Moore &lt;d.moore@calyptra-internal.com&gt;, ${email}<br>
+		<strong>Date:</strong> ${new Date().toLocaleDateString()} ${new Date(Date.now() + 48 * 60000).toLocaleTimeString()}<br>
+		<strong>Subject:</strong> RE: New Application - Data Entry Role
+	</div>
+	<div class="email-body">
+		<p>The candidate is still in this thread. Let's continue this on my new email, please.</p>
+		<p>PS: Gregory, didn't you just include a password in an email?</p>
+		<div class="signature">
+			Brittany White<br>
+			HR Specialist<br>
+			Calyptra Watch &amp; Guard<br>
+			b.white@calyptra-internal.com
 		</div>
 	</div>
 </div>
@@ -134,97 +155,113 @@ export const actions: Actions = {
 </html>
 		`;
 
-		try {
-			console.log('SendGrid API ready');
+        try {
+            console.log("SendGrid API ready");
 
-			const mailOptions = {
-				from: `"Margaret Chen - HR Director" <${process.env.EMAIL_FROM}>`,
-				to: email, // Send to the applicant
-				// Uncomment the line below and add your personal email to test delivery
-				// to: 'your-personal-email@gmail.com',
-				subject: `Re: Your Application - Internal Review Complete`,
-				html: emailThread,
-				text: `
-=== EMAIL THREAD FORWARDED ===
-
+            const mailOptions = {
+                from: `"Brittany White - HR" <${process.env.EMAIL_FROM}>`,
+                to: email, // Send to the applicant
+                subject: `RE: New Application - Data Entry Role`,
+                html: emailThread,
+                text: `
 From: Margaret Chen <m.chen@calyptra-internal.com>
-To: Inspector Zachary Bakefield <z.bakefield@calyptra-internal.com>
-Subject: New OSS Candidate - Immediate Review Required
+To: Brittany White <b.white@calyptra-internal.com>, Douglas Moore <d.moore@calyptra-internal.com>, Gregory Glass <g.glass@calyptra-internal.com>
+CC: ${email}
+Subject: RE: New Application - Data Entry Role
 
+Just saw this application come through. Is the job application still up on the website? I thought we agreed that we were going to see if the C-----e could handle the data entry stuff for us for now? I don't appreciate that people are still able to apply right now.
 
-Applicant: ${email}
-Application Time: ${timestamp}
+Please let me know when this will be resolved.
 
-Their response to the screening question:
-"${reason}"
-
-RESPONSE E
-
-Margaret Chen, HR Director
+Margaret Chen, Chief Detective
 
 ---
 
-From: Inspector Zachary Bakefield <z.Bakefield@calyptra-internal.com>
-To: Margaret Chen <m.chen@calyptra-internal.com>
-CC: Douglas Moore <d.moore@calyptra-internal.com>
-Subject: RE: New OSS Candidate - Review
+From: Brittany White <b.white@calyptra-internal.com>
+To: Margaret Chen, ${email}
+Subject: RE: New Application - Data Entry Role
 
-RESPONSE D
+Did you intend to CC the candidate on this email, Margaret? In any case, as you can see, we are apparently no longer hiring for this role at this time, but that may change in the near future. Please keep an eye on our website if you are still interested in a role with us.
 
----
-
-From: Detective Douglas Moore <d.moore@calyptra-internal.com>
-Subject: RE: New OSS Candidate - My Assessment
-
-RESPONSE E
-
-Detective Douglas Moore
+Brittany White, HR Specialist
 
 ---
 
-LAST RESPONSE?
+From: Douglas Moore <d.moore@calyptra-internal.com>
+To: Margaret Chen, Brittany White, Gregory Glass, ${email}
+Subject: RE: New Application - Data Entry Role
 
-Margaret Chen
-HR Director
-Calyptra Watch & Guard
-				`
-			};
+Hey guys,
 
-			console.log('Sending email with options:', {
-				from: mailOptions.from,
-				to: mailOptions.to,
-				subject: mailOptions.subject
-			});
+Is the password to the intranet still PEAC0CK123? I can't log in.
 
-			const info = await sgMail.send(mailOptions);
-			
-			console.log('Email sent successfully!');
-			console.log('Message ID:', info[0].headers?.['x-message-id']);
-			console.log('Response:', info[0].statusCode);
-			console.log('Accepted:', [email]);
-			console.log('Rejected:', []);
+Douglas Moore Jr.
 
-			// Save to database after successful email send
-			try {
-				await saveApplicant(email, reason);
-				console.log('✅ Applicant saved to database');
-			} catch (dbError) {
-				console.error('⚠️  Database save failed, but email was sent:', dbError);
-				// Don't fail the request - email was sent successfully
-			}
+---
 
-			return { success: true, message: 'Application submitted successfully. You will be contacted if you meet our requirements.' };
+From: Gregory Glass <g.glass@calyptra-internal.com>
+To: Margaret Chen, Brittany White, Douglas Moore, ${email}
+Subject: RE: New Application - Data Entry Role
 
-		} catch (error) {
-			console.error('Failed to send email:', error);
-			if (error instanceof Error) {
-				console.error('Error details:', {
-					message: error.message,
-					name: error.name,
-					stack: error.stack
-				});
-			}
-			return fail(500, { error: 'Failed to submit application. Please try again later.' });
-		}
-	}
+DOUGLAS you CANNOT put passwords in emails like this! Now I have to change it! I'm limiting your access to the digitization project you're working on. Please just log in to https://watchandguard.us/access with the password "ARCHIVE1971".
+
+Gregory Glass, IT Specialist
+
+---
+
+From: Brittany White <b.white@calyptra-internal.com>
+To: Margaret Chen, Gregory Glass, Douglas Moore, ${email}
+Subject: RE: New Application - Data Entry Role
+
+The candidate is still in this thread. Let's continue this on my new email, please.
+
+Brittany White, HR Specialist
+				`,
+            };
+
+            console.log("Sending email with options:", {
+                from: mailOptions.from,
+                to: mailOptions.to,
+                subject: mailOptions.subject,
+            });
+
+            const info = await sgMail.send(mailOptions);
+
+            console.log("Email sent successfully!");
+            console.log("Message ID:", info[0].headers?.["x-message-id"]);
+            console.log("Response:", info[0].statusCode);
+            console.log("Accepted:", [email]);
+            console.log("Rejected:", []);
+
+            // Save to database after successful email send
+            try {
+                await saveApplicant(email, reason);
+                console.log("✅ Applicant saved to database");
+            } catch (dbError) {
+                console.error(
+                    "⚠️  Database save failed, but email was sent:",
+                    dbError,
+                );
+                // Don't fail the request - email was sent successfully
+            }
+
+            return {
+                success: true,
+                message:
+                    "Application submitted successfully. You will be contacted if you meet our requirements.",
+            };
+        } catch (error) {
+            console.error("Failed to send email:", error);
+            if (error instanceof Error) {
+                console.error("Error details:", {
+                    message: error.message,
+                    name: error.name,
+                    stack: error.stack,
+                });
+            }
+            return fail(500, {
+                error: "Failed to submit application. Please try again later.",
+            });
+        }
+    },
 };
