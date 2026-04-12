@@ -48,7 +48,7 @@
             <li>
                 Update astrological charts with new information in real-time
             </li>
-            <li>Remotely assist with rodent infestations as needed)</li>
+            <li>Remotely assist with rodent infestations as needed</li>
             <li>Take minutes on firmwide committee meetings</li>
             <li>Maintain the internal wiki</li>
             <li>Monitor security footage</li>

@@ -43,7 +43,7 @@
                 <h3>Asset Recovery</h3>
                 <p>
                     Location and recovery of missing persons, stolen property,
-                    and assets impercetible.
+                    and assets imperceptible.
                 </p>
             </div>
         </div>
@@ -61,18 +61,16 @@
                 </p>
                 <ul>
                     <li>
-                        <strong>Established Reputation:</strong> Nearly a five
-                        combined centuries of experience to clienteles across
-                        history.
+                        <strong>Established Reputation:</strong> Nearly a five combined
+                        centuries of experience to clienteles across history.
                     </li>
                     <li>
-                        <strong>Powerful Network:</strong> Our teams enjoy the
-                        support of moles worldwide.
+                        <strong>Powerful Network:</strong> Our teams enjoy the support
+                        of moles worldwide.
                     </li>
                     <li>
-                        <strong>Select Clientele:</strong> We maintain the right
-                        to accept only cases that align with our standards and
-                        capabilities.
+                        <strong>Select Clientele:</strong> We maintain the right to
+                        accept only cases that align with our standards and capabilities.
                     </li>
                 </ul>
             </div>
