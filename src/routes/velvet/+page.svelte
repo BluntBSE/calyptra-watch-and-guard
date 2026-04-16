@@ -97,11 +97,14 @@
                         Join the Discord
                     </a>
                 </div>
-                <p class="secret-text">Got here pre-launch? You can come back any time. Already supported
-                us? You can change your backer tier. If you want to keep your existing
-                pledge and just want the "Velvet" role, send us a message on KS or
-                @BluntBSE on Discord. There is one more secret to be found for those
-                foolish enough to take risky jobs.</p>
+                <p class="secret-text">
+                    Got here during the pre-launch? This link will remain valid,
+                    so just follow the Kickstarter. Already supported us? You
+                    can change your backer tier. If you want to keep your
+                    existing pledge and just want the "Velvet" role, send us a
+                    message on KS or @BluntBSE on Discord. There is one more
+                    secret to be found for those who take risky jobs.
+                </p>
             </div>
         </div>
     </div>
