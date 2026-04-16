@@ -69,6 +69,15 @@
 
                 <div class="links">
                     <a
+                        href="https://www.kickstarter.com/projects/tmob/the-matter-of-being/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="link kickstarter-link"
+                    >
+                        <span class="link-icon">✶</span>
+                        View the Kickstarter Page
+                    </a>
+                    <a
                         href="https://www.kickstarter.com/projects/tmob/488435865?secret_reward_token=5941f42c"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -77,15 +86,6 @@
                         <span class="link-icon">★</span>
                         Unlock the Velvet Tier on Kickstarter
                     </a>
-
-                    <button
-                        class="link copy-link"
-                        class:copied
-                        on:click={copyLink}
-                    >
-                        <span class="link-icon">{copied ? "✓" : "⬡"}</span>
-                        {copied ? "Link copied!" : "Copy shareable link"}
-                    </button>
 
                     <a
                         href="https://discord.gg/CAE6atnwqw"
@@ -97,6 +97,11 @@
                         Join the Discord
                     </a>
                 </div>
+                <p class="secret-text">Got here pre-launch? You can come back any time. Already supported
+                us? You can change your backer tier. If you want to keep your existing
+                pledge and just want the "Velvet" role, send us a message on KS or
+                @BluntBSE on Discord. There is one more secret to be found for those
+                foolish enough to take risky jobs.</p>
             </div>
         </div>
     </div>
@@ -111,14 +116,14 @@
         bottom: 0;
         z-index: 10000;
         display: flex;
-        align-items: center;
+        align-items: safe center;
         justify-content: flex-end;
-        overflow: hidden;
+        overflow-y: auto;
         background: #0a0a0a;
     }
 
     .background-image {
-        position: absolute;
+        position: fixed;
         inset: 0;
         z-index: 0;
     }
@@ -148,10 +153,11 @@
 
     .modal-container {
         position: relative;
+        margin: auto 0;
         z-index: 1;
         padding: 2rem 4rem 2rem 2rem;
         display: flex;
-        align-items: center;
+        align-items: safe center;
         justify-content: flex-end;
         max-width: 520px;
         width: 100%;
@@ -197,7 +203,7 @@
         background: linear-gradient(145deg, #1a1816 0%, #0f0e0c 100%);
         border: 1px solid rgba(255, 198, 126, 0.15);
         position: relative;
-        overflow: hidden;
+        overflow-y: auto;
     }
 
     .placeholder-image::after {
@@ -269,7 +275,7 @@
 
     .link {
         display: flex;
-        align-items: center;
+        align-items: safe center;
         gap: 0.75rem;
         padding: 1rem 1.25rem;
         text-decoration: none;
@@ -281,7 +287,7 @@
         background: rgba(255, 198, 126, 0.03);
         color: #c8c4b8;
         position: relative;
-        overflow: hidden;
+        overflow-y: auto;
     }
 
     .link::before {
@@ -360,7 +366,7 @@
     @media (max-width: 768px) {
         .velvet-overlay {
             justify-content: center;
-            align-items: flex-end;
+            align-items: safe flex-end;
         }
 
         .background-image::after {
