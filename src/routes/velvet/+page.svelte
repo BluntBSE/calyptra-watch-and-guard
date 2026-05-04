@@ -96,6 +96,15 @@
                         <span class="link-icon">◈</span>
                         Join the Discord
                     </a>
+                    <a
+                        href="https://store.steampowered.com/app/3869880/The_Matter_of_Being/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="link steam-link"
+                    >
+                        <span class="link-icon">▶</span>
+                        Download the Demo
+                    </a>
                 </div>
                 <p class="secret-text">
                     Got here during the pre-launch? This link will remain valid,
@@ -121,6 +130,7 @@
         display: flex;
         align-items: safe center;
         justify-content: flex-end;
+        overflow-x: hidden;
         overflow-y: auto;
         background: #0a0a0a;
     }
@@ -290,7 +300,7 @@
         background: rgba(255, 198, 126, 0.03);
         color: #c8c4b8;
         position: relative;
-        overflow-y: auto;
+        overflow: hidden;
     }
 
     .link::before {

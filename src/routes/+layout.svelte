@@ -80,6 +80,7 @@
 
 <style>
     :global(body) {
+        overflow-x: hidden;
         margin: 0;
         font-family: "Courier New", "Lucida Console", Monaco, monospace;
         line-height: 1.7;
